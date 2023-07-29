@@ -1,6 +1,0 @@
-0000000000000000000000000000000000000000 f295926b9bb029c55f5b50d4c52d52e50302ef2e JonathanHansen98 <kriah0872@gmail.com> 1689624608 -0700	clone: from https://github.com/JonathanHansen98/nvim-config.git
-f295926b9bb029c55f5b50d4c52d52e50302ef2e 881410cf38fa35e3f62259c2a88ac69b7ce7f5ba JonathanHansen98 <kriah0872@gmail.com> 1689718346 -0700	commit: typescript.nvim integration. tsserver still kind sucks
-881410cf38fa35e3f62259c2a88ac69b7ce7f5ba 881410cf38fa35e3f62259c2a88ac69b7ce7f5ba JonathanHansen98 <kriah0872@gmail.com> 1689718358 -0700	checkout: moving from master to to-lazy
-881410cf38fa35e3f62259c2a88ac69b7ce7f5ba 552633809669eee6e08ece9b845e7d81fa5ea1ea JonathanHansen98 <kriah0872@gmail.com> 1689726833 -0700	commit: wip
-552633809669eee6e08ece9b845e7d81fa5ea1ea 881410cf38fa35e3f62259c2a88ac69b7ce7f5ba JonathanHansen98 <kriah0872@gmail.com> 1689726841 -0700	checkout: moving from to-lazy to master
-881410cf38fa35e3f62259c2a88ac69b7ce7f5ba 552633809669eee6e08ece9b845e7d81fa5ea1ea JonathanHansen98 <kriah0872@gmail.com> 1689743052 -0700	checkout: moving from master to to-lazy
