@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.api.nvim_set_keymap("n", "<leader>tt", ":Exp<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>tt", ":Exp<CR>", { noremap = true })
 
 -- Disable arrow keys (git gud scrub)
 vim.api.nvim_set_keymap("n", "<Up>", "<Nop>", { noremap = true })

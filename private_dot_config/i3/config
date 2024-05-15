@@ -15,8 +15,9 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
+# Start a terminal
 bindsym $mod+Return exec --no-startup-id ~/tmux_session.sh
-bindsym $mod+t exec --no-startup-id alacritty
+bindsym $mod+t exec --no-startup-id ~/tmux_session.sh
 
 # Window kill command
 bindsym $mod+q kill
@@ -25,10 +26,10 @@ bindsym $mod+q kill
 bindsym $mod+Shift+d exec --no-startup-id launcher_t1 
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -52,9 +53,7 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
-bindsym $mod+Shift+q split toggle
+bindsym $mod+Shift+t split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -202,15 +201,19 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+bar {
+  status_command i3status  
+  position top
+}
+
 # Autostart applications
 exec --no-startup-id picom 
 exec --no-startup-id nm-applet
-# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
 
 # Theme colors
 client.focused          #272827 #272827 #657b83 #272827 #272827

@@ -1,40 +1,38 @@
 local file_types = require("formatter.filetypes")
 
-local use_prettierd = {
-	"javascript",
-	"typescript",
-	"typescriptreact",
-	"json",
-	"html",
-	"css",
-	"markdown",
-}
+local function build_filetypes()
+	local use_prettierd = {
+		"javascript",
+		"typescript",
+		"typescriptreact",
+		"json",
+		"html",
+		"css",
+	}
 
-local use_lsp_format = {
-	"prisma",
-	"go",
-}
+	local filetypes = {
+		lua = file_types.lua.stylua,
+		prisma = function()
+			vim.lsp.buf.format()
+		end,
+		["*"] = {
+			file_types.any.remove_trailing_whitespace,
+		},
+		go = {
+			function()
+				vim.lsp.buf.format()
+			end,
+		},
+	}
 
-local build_config = function()
-	local config = {}
-
-	for _, file_type in ipairs(use_prettierd) do
-		config[file_type] = file_types[file_type].prettierd
+	for _, lang in ipairs(use_prettierd) do
+		filetypes[lang] = file_types[lang].prettierd
 	end
 
-	for _, file_type in ipairs(use_lsp_format) do
-		config[file_type] = vim.lsp.buf.format
-	end
-
-	config["lua"] = file_types["lua"].stylua
-
-	return config
+  return filetypes
 end
-
--- Format on save
-vim.cmd([[autocmd BufWritePre <buffer> FormwatWrite]])
 
 require("formatter").setup({
 	logging = false,
-	filetype = build_config(),
+	filetype = build_filetypes(),
 })

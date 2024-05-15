@@ -11,10 +11,6 @@ wk.register({
 		v = { "<cmd>vs<cr>", "Vertical Split" },
 		h = { "<cmd>sp<cr>", "Horizontal Split" },
 	},
-	t = {
-		name = "tree",
-		t = { "<cmd>Exp<cr>", "Toggle Tree" },
-	},
 	v = {
 		name = "view actions",
 	},

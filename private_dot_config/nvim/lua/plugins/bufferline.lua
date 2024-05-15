@@ -14,6 +14,7 @@ return {
 		{ "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", desc = "Buffer Goto 8" },
 		{ "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", desc = "Buffer Goto 9" },
 		{ "<leader>0", "<cmd>BufferLineGoToBuffer 10<cr>", desc = "Buffer Goto 10" },
+		{ "<leader>bc", "<cmd>bd<cr>", desc = "Close Buffer" },
 	},
 	opts = {
 		options = {
