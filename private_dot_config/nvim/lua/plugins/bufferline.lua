@@ -14,7 +14,11 @@ return {
 		{ "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", desc = "Buffer Goto 8" },
 		{ "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", desc = "Buffer Goto 9" },
 		{ "<leader>0", "<cmd>BufferLineGoToBuffer 10<cr>", desc = "Buffer Goto 10" },
-		{ "<leader>bc", "<cmd>bd<cr>", desc = "Close Buffer" },
+		{ "<leader>bc", "<cmd>bd!<cr>", desc = "Close Buffer" },
+		{ "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", desc = "Close Left Buffer" },
+		{ "<leader>br", "<cmd>BufferLineCloseRight<cr>", desc = "Close Right Buffer" },
+		{ "<leader>n", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		{ "<leader>p", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous Buffer" },
 	},
 	opts = {
 		options = {
@@ -22,11 +26,11 @@ return {
 			diagnostics_indicator = function(count)
 				return "(" .. count .. ")"
 			end,
-			buffer_close_icon = "󰅖",
+			buffer_close_icon = "✗",
 			modified_icon = "●",
-			close_icon = "",
-			left_trunc_marker = "",
-			right_trunc_marker = "",
+			close_icon = "✗",
+			left_trunc_marker = "◀",
+			right_trunc_marker = "▶",
 			show_buffer_close_icons = true,
 			show_close_icon = true,
 			separator_style = "thin",

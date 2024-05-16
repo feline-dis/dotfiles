@@ -34,7 +34,3 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	command = "FormatWrite",
-})

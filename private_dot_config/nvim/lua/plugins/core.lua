@@ -9,6 +9,13 @@ return {
 	{ "stevearc/dressing.nvim" },
 	{ "prisma/vim-prisma" },
 	{ "j-hui/fidget.nvim", tag = "v1.0.0", opts = {} },
+	{ "folke/todo-comments.nvim", opts = {} },
+	{
+		dir = "/home/feline-dis/develop/nvim-plugins/test.nvim",
+		config = function()
+			require("test").setup()
+		end,
+	},
 	{
 		"mbbill/undotree",
 		cmd = "UndotreeToggle",
@@ -16,6 +23,13 @@ return {
 			{ "<leader>u", "<cmd>UndotreeToggle<CR><cmd>UndotreeFocus<CR>", desc = "Toggle Undotree" },
 		},
 	},
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+
 	-- Praise tpope
 	{ "tpope/vim-commentary" },
 	{ "tpope/vim-surround" },
