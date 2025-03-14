@@ -1,7 +1,14 @@
 return {
 	"nvim-pack/nvim-spectre",
 	config = function()
-		require("spectre").setup()
+		require("spectre").setup({
+			default = {
+				replace = {
+					cmd = "sed",
+				},
+			},
+		})
+
 		vim.keymap.set(
 			"n",
 			"<leader>S",

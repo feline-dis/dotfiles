@@ -17,7 +17,6 @@ return {
 					end
 
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
@@ -127,6 +126,7 @@ return {
 			},
 		},
 		opts = {
+			stop_after_first = true,
 			notify_on_error = false,
 			format_on_save = function(bufnr)
 				local disable_filetypes = { c = true, cpp = true }
@@ -137,9 +137,9 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
 			},
 		},
 	},
@@ -234,6 +234,9 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					per_filetype = {
+						codecompanion = { "codecompanion" },
+					},
 				},
 			})
 		end,

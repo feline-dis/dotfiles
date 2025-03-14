@@ -8,14 +8,24 @@ return {
 	{ "jose-elias-alvarez/typescript.nvim" },
 	{ "stevearc/dressing.nvim" },
 	{ "prisma/vim-prisma" },
-	{ "j-hui/fidget.nvim", tag = "v1.0.0", opts = {} },
-	{ "folke/todo-comments.nvim", opts = {} },
+	{ "rcarriga/nvim-notify" },
 	{
-		dir = "/home/feline-dis/develop/nvim-plugins/test.nvim",
-		config = function()
-			require("test").setup()
-		end,
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "codecompanion" },
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			notification = {
+				redirect = function(msg, level, opts)
+					if opts and opts.on_open then
+						return require("fidget.integration.nvim-notify").delegate(msg, level, opts)
+					end
+				end,
+			},
+		},
+	},
+	{ "folke/todo-comments.nvim" },
 	{
 		"mbbill/undotree",
 		cmd = "UndotreeToggle",
@@ -29,6 +39,7 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
+	{ "noib3/nvim-oxi" },
 
 	-- Praise tpope
 	{ "tpope/vim-commentary" },
