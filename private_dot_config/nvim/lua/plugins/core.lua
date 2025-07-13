@@ -7,11 +7,14 @@ return {
 	{ "github/copilot.vim" },
 	{ "jose-elias-alvarez/typescript.nvim" },
 	{ "stevearc/dressing.nvim" },
+	{ "stevearc/overseer.nvim" },
 	{ "prisma/vim-prisma" },
 	{ "rcarriga/nvim-notify" },
 	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown", "codecompanion" },
+		"isak102/ghostty.nvim",
+		config = function()
+			require("ghostty").setup()
+		end,
 	},
 	{
 		"j-hui/fidget.nvim",

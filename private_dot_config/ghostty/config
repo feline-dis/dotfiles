@@ -1,0 +1,113 @@
+# =============================================================================
+# KEYBINDINGS (tmux-style with Ctrl+Space prefix)
+# =============================================================================
+
+# Window Management
+# -----------------
+# Ctrl+Space then c = New window (tmux: new-window)
+keybind = ctrl+space>c=new_window
+
+# Ctrl+Space then n = Next tab (tmux: next-window)  
+keybind = ctrl+space>n=next_tab
+
+# Ctrl+Space then p = Previous tab (tmux: previous-window)
+keybind = ctrl+space>p=previous_tab
+
+# Ctrl+Space then l = Last tab (tmux: last-window)
+# keybind = ctrl+space>l=goto_tab:-1
+
+# Ctrl+Space then & = Kill surface (tmux: kill-window)
+# keybind = ctrl+space>ampersand=close_surface
+
+# Ctrl+Space then d = Detach (tmux: detach-client) - minimize window
+# keybind = ctrl+space>d=minimize_window
+
+# Ctrl+Space then comma = Rename tab (tmux: rename-window)
+# keybind = ctrl+space>comma=rename_current_tab
+
+# Window Navigation by Number
+# ---------------------------
+# Ctrl+Space then 1-9 = Go to tab number (tmux: select-window)
+keybind = ctrl+space>one=goto_tab:1
+keybind = ctrl+space>two=goto_tab:2
+keybind = ctrl+space>three=goto_tab:3
+keybind = ctrl+space>four=goto_tab:4
+keybind = ctrl+space>five=goto_tab:5
+keybind = ctrl+space>six=goto_tab:6
+keybind = ctrl+space>seven=goto_tab:7
+keybind = ctrl+space>eight=goto_tab:8
+keybind = ctrl+space>nine=goto_tab:9
+
+# Create new tab
+# --------------
+# Ctrl+Space then t = Create new tab
+keybind = ctrl+space>t=new_tab
+
+# Pane/Split Management
+# ---------------------
+# Ctrl+Space then % = Split right (tmux: split-window -h)
+keybind = ctrl+space>shift+five=new_split:right
+
+# Ctrl+Space then " = Split down (tmux: split-window -v)
+keybind = ctrl+space>shift+apostrophe=new_split:down
+
+# Ctrl+Space then x = Kill pane (tmux: kill-pane)
+keybind = ctrl+space>x=close_surface
+
+# Ctrl+Space then z = Zoom pane (tmux: resize-pane -Z)
+keybind = ctrl+space>z=toggle_split_zoom
+
+# Pane Navigation
+# ---------------
+# Ctrl+Space then Arrow Keys = Navigate panes (tmux: select-pane)
+keybind = ctrl+space>up=goto_split:top
+keybind = ctrl+space>down=goto_split:bottom
+keybind = ctrl+space>left=goto_split:left
+keybind = ctrl+space>right=goto_split:right
+
+# Ctrl+Space then h/j/k/l = Navigate panes (vim-like)
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+# Reload config
+keybind = ctrl+space>r=reload_config
+
+# Ctrl+Space then o = Next pane (tmux: select-pane -t:.+)
+keybind = ctrl+space>o=goto_split:next
+
+# Ctrl+Space then ; = Previous pane (tmux: last-pane)
+keybind = ctrl+space>semicolon=goto_split:previous
+
+# Pane Resizing
+# -------------
+# Ctrl+Space then Ctrl+Arrow Keys = Resize panes (tmux: resize-pane)
+keybind = ctrl+space>ctrl+up=resize_split:up,50
+keybind = ctrl+space>ctrl+down=resize_split:down,50
+keybind = ctrl+space>ctrl+left=resize_split:left,50
+keybind = ctrl+space>ctrl+right=resize_split:right,50
+
+# =============================================================================
+# GENERAL CONFIGURATION
+# =============================================================================
+#
+theme = "catppuccin-mocha"
+
+# Font
+font-family = "JetBrains Mono"
+font-size = 14
+
+# Window settings
+window-padding-x = 10
+window-padding-y = 10
+
+# Scrollback
+scrollback-limit = 10000
+
+# Cursor
+cursor-style = "block"
+cursor-style-blink = true
+
+# Shell integration
+shell-integration = "zsh"

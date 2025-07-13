@@ -1,167 +1,208 @@
-path+=("/home/feline-dis/Downloads/nvim-linux64/bin")
+#!/bin/zsh
 
-# Path to your oh-my-zsh installation.
+# =============================================================================
+# ENVIRONMENT VARIABLES
+# =============================================================================
+
+# Oh My Zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_THEME="random"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+# Language and locale
+export LANG="en_US.UTF-8"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Editor preferences
+export EDITOR="nvim"
+export VISUAL="nvim"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Node.js and package managers
+export NVM_DIR="$HOME/.nvm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# =============================================================================
+# PATH CONFIGURATION
+# =============================================================================
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  z
+# Add custom paths
+path+=(
+    "$HOME/Downloads/nvim-linux64/bin"
+    "$HOME/.local/bin"
+    "$HOME/Downloads/Discord"
+    "/usr/local/go/bin"
 )
 
-source $ZSH/oh-my-zsh.sh
-alias slsil="invoke-local.sh"
-alias chbg="~/.fehbg"
-alias v="nvim ."
-alias vim="nvim"
-alias nvc="nvim ~/.config/nvim"
-alias tmc="nvim ~/config/tmux"
+# PNPM path handling
+case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Function path for custom zsh functions
+fpath+="${ZDOTDIR:-~}/.zsh_functions"
+
+# =============================================================================
+# OH-MY-ZSH CONFIGURATION
+# =============================================================================
+
+# Oh My Zsh settings (commented options available for customization)
+# CASE_SENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
+# DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+# ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Update behavior
+# zstyle ':omz:update' mode disabled
+# zstyle ':omz:update' mode auto
+# zstyle ':omz:update' mode reminder
+# zstyle ':omz:update' frequency 13
+
+# Plugins
+plugins=(
+    git
+    z
+    zsh-autosuggestions    # Suggested addition
+    zsh-syntax-highlighting # Suggested addition
+)
+
+# Source Oh My Zsh
+source "$ZSH/oh-my-zsh.sh"
+
+# =============================================================================
+# ALIASES - SYSTEM & NAVIGATION
+# =============================================================================
+
+# Basic system commands
 alias c="clear"
-alias zc="nvim ~/.zshrc"
-alias zl="source ~/.zshrc"
-alias cdsp="cd ~/develop/side-projects"
-alias cdnp="cd ~/develop/nerd-power"
-alias update="sudo apt update && sudo apt upgrade -y"
 alias ls="ls -a --color=auto"
 alias ll="ls -la --color=auto"
+alias mkdir="mkdir -pv"
+alias update="sudo apt update && sudo apt upgrade -y"
 
-## quick back out of a directory
+# Navigation shortcuts
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../../"
 alias .4="cd ../../../../"
 alias .5="cd ../../../../.."
 
+# Common typos
+alias sl="ls"
+alias s="ls"
+
+# =============================================================================
+# ALIASES - DEVELOPMENT
+# =============================================================================
+
+# Editor shortcuts
+alias v="nvim ."
+alias vim="nvim"
+alias nvc="nvim ~/.config/nvim"
+alias tmc="nvim ~/config/tmux"
+alias zc="nvim ~/.zshrc"
+alias zl="source ~/.zshrc"
+
+# =============================================================================
+# ALIASES - UTILITIES
+# =============================================================================
+
+# Search utilities
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
-alias mkdir="mkdir -pv"
-
-# top mem proccesses
+# Process monitoring
 alias psmem="ps auxf | sort -nr -k 4"
 alias psmem10="ps auxf | sort -nr -k 4 | head -10"
-
-# top cpu proccesses
 alias pscpu="ps auxf | sort -nr -k 3"
 alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
-# Common Typos:
-alias sl="ls"
-alias s="ls"
+# System utilities
+alias chbg="~/.fehbg"
 
+# =============================================================================
+# FUNCTIONS
+# =============================================================================
 
-ghpr() {
-  gh pr create -f -B $1
-}
-
+# Create directory and cd into it
 mkcd() {
-  mkdir -p "$1" && cd "$1"
+    mkdir -p "$1" && cd "$1"
 }
 
-# User configuration
+# GitHub PR creation
+ghpr() {
+    gh pr create -f -B "$1"
+}
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# Quick file search
+ff() {
+    find . -type f -name "*$1*" 2>/dev/null
+}
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Quick directory search
+fd() {
+    find . -type d -name "*$1*" 2>/dev/null
+}
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Extract various archive formats
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)   tar xjf "$1"   ;;
+            *.tar.gz)    tar xzf "$1"   ;;
+            *.bz2)       bunzip2 "$1"   ;;
+            *.rar)       unrar x "$1"   ;;
+            *.gz)        gunzip "$1"    ;;
+            *.tar)       tar xf "$1"    ;;
+            *.tbz2)      tar xjf "$1"   ;;
+            *.tgz)       tar xzf "$1"   ;;
+            *.zip)       unzip "$1"     ;;
+            *.Z)         uncompress "$1";;
+            *.7z)        7z x "$1"      ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# =============================================================================
+# EXTERNAL TOOL INITIALIZATION
+# =============================================================================
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-fpath+=${ZDOTDIR:-~}/.zsh_functions
+# NVM initialization
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# pnpm
-export PNPM_HOME="/home/feline-dis/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# =============================================================================
+# ADDITIONAL SUGGESTIONS
+# =============================================================================
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="${PATH}:${HOME}/.local/bin/"
-path+=/home/feline-dis/go/bin
-alias please="gum input --password | sudo -nS"
+# History configuration
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE="$HOME/.zsh_history"
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# Completion improvements
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Key bindings
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+
+# =============================================================================
+# PRIVATE CONFIGURATION
+# =============================================================================
+[ -f ~/.zsh_private ] && source ~/.zsh_private
