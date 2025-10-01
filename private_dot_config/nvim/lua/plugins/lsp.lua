@@ -17,18 +17,18 @@ return {
 					end
 
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+					map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definitions")
+					map("<leader>gs", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 					map(
-						"<leader>ws",
+						"<leader>gws",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[W]orkspace [S]ymbols"
 					)
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 					map("K", vim.lsp.buf.hover, "Hover Documentation")
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 				end,
 			})
 
@@ -61,6 +61,14 @@ return {
 				--
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				-- tsserver = {},
+				omnisharp = {
+					root_dir = require("lspconfig.util").root_pattern(
+						"*.sln",
+						"*.csproj",
+						"omnisharp.json",
+						"function.json"
+					),
+				},
 				prismals = {},
 				lua_ls = {
 					-- cmd = {...},

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(nvim:*)",
+      "Bash(find:*)",
+      "Bash(~/.local/share/nvim/mason/bin/omnisharp:*)"
+    ],
+    "deny": []
+  }
+}
